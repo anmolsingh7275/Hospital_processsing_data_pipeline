@@ -1,0 +1,6 @@
+patientId,timestamp,test,value
+101,1712002000,glucose,120
+101,1712003000,cholesterol,200
+102,1712002500,glucose,140
+103,1712002600,cholesterol,190
+104,1712002700,glucose,110
