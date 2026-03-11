@@ -14,14 +14,12 @@ def process_silver():
 
     # Rename columns to consistent format
     ehr = ehr.rename(columns={"patientId": "patient_id"})
-
     vitals = vitals.rename(columns={"patientId": "patient_id"})
-
     labs = labs.rename(columns={
-        "patientId": "patient_id",
-        "test": "lab_test",
-        "value": "lab_value"
-    })
+    "patientId": "patient_id",
+    "test": "lab_test",
+    "value": "lab_value"
+})
 
     # Convert timestamp
     vitals["timestamp"] = pd.to_datetime(vitals["timestamp"], unit="s")
