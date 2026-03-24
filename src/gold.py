@@ -15,13 +15,13 @@ def detect_anomalies():
     for _, row in df.iterrows():
 
         if row["hr"] > 120:
-            anomalies.append((row["patientId"], "High Heart Rate"))
+            anomalies.append((row["patient_id"], "High Heart Rate"))
 
         if row["ox"] < 92:
-            anomalies.append((row["patientId"], "Low Oxygen"))
+            anomalies.append((row["patient_id"], "Low Oxygen"))
 
         if row["sys"] > 160 or row["dia"] > 100:
-            anomalies.append((row["patientId"], "High Blood Pressure"))
+            anomalies.append((row["patient_id"], "High Blood Pressure"))
 
     anomalies_df = pd.DataFrame(anomalies, columns=["patient_id","anomaly"])
 

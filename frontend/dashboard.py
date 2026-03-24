@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 
 st.title("🏥 Hospital Analytics Dashboard")
 
@@ -12,17 +13,28 @@ page = st.sidebar.radio(
 
 if page == "Patient Data":
 
-    df = pd.read_csv("silver/patient_master.csv")
+    path = Path("silver/patient_master.csv")
 
-    st.dataframe(df)
+    if path.exists():
+        df = pd.read_csv(path)
+        st.dataframe(df)
+    else:
+        st.warning("Run pipeline first to generate data")
 
 if page == "Anomalies":
 
-    df = pd.read_csv("gold/anomalies.csv")
+    path = Path("gold/anomalies.csv")
 
-    st.dataframe(df)
+    if path.exists():
+        df = pd.read_csv(path)
+        st.dataframe(df)
+    else:
+        st.warning("Run pipeline first")
 
 if page == "Visualizations":
 
-    st.image("visualizations/hr_trend.png")
-    st.image("visualizations/oxygen_distribution.png")
+    if Path("visualizations/hr_trend.png").exists():
+        st.image("visualizations/hr_trend.png")
+
+    if Path("visualizations/oxygen_distribution.png").exists():
+        st.image("visualizations/oxygen_distribution.png")
